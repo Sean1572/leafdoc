@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+ {% block title %}Home{% endblock %}
+
+ {% block content %}
+  <h1>Home</h1>
+  <ul>
+    <li><a href={% url_for('classifyGet') %}">Classify plant</a></li>
+    <li><a href="/howdoesthiswork">Explanation of project process</a></li>
+  </ul>
+ {% endblock %}
