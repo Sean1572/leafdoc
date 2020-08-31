@@ -2,10 +2,51 @@
 
  {% block title %}Home{% endblock %}
 
- {% block content %}
-  <h1>Home</h1>
-  <ul>
-    <li><a href={% url_for('classifyGet') %}">Classify plant</a></li>
-    <li><a href="/howdoesthiswork">Explanation of project process</a></li>
-  </ul>
+{% block styles %}
+<link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet"> 
+<style>
+    .banner{
+       background: linear-gradient(
+          rgba(0, 0, 0, 0.3), 
+          rgba(0, 0, 0, 0.3)
+        ),url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpaperswide.com%2Fdownload%2Froad_to_heaven_2-wallpaper-3840x1600.jpg&f=1&nofb=1)") no-repeat fixed center;
+       width:100%; 
+       height:24rem;
+       text-align:center;
+       padding-top: 12%;
+       padding-bottom:15%;
+       font-size: 20px;
+       font-weight: bold;
+       font-family: 'Kalam',cursive;
+       color:white;
+       margin-bottom: 30px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class='banner'>
+    <h1 style='font-size:8rem;'>Plant Doctor</h1>
+</div> 
+ <div class='mx-auto  container row'>
+    <div class='col-6'>
+        <div class='card rounded'>
+            <img src='https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fmedia-2.web.britannica.com%2Feb-media%2F26%2F152026-004-48CC29A5.jpg&f=1&nofb=1' class='card-img-top' alt='A picture of scattered leaves' style='position:relative;'>
+            <div class='card-body'>
+                <h5 class='card-title'>Plant Leaf classifier</h5>
+                <p class='card-text'>Concerned about the health of your plant? Upload a plant leaf here and we'll tell you about your plant!</p>
+                <a class='btn btn-lg btn-success' href={{ url_for('classify') }}>Classify plant</a>
+            </div>
+        </div>
+    </div>
+    <div class='col-6'>
+        <div class='card rounded'>
+            <img src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F1200%2F1*Zy0gFGzNwZAwjeCgpHhIHw.png&f=1&nofb=1' class='card-img-top' alt='A picture of scattered leaves'>
+            <div class='card-body'>
+                <h5 class='card-title'>Explanation</h5>
+                <p class='card-text'>Here we will explain the magic behind this website! </p>
+                <a class='btn btn-lg btn-warning' href={{ url_for('explanation') }}>Explanation</a>
+            </div>
+        </div>
+    </div>
+  </div>
  {% endblock %}

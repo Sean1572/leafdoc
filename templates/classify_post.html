@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block title %}Plant Results {% endblock %}
+{% block body %}
+<div class='jumbotron container pt-3 rounded mt-4'>
+    <div id='results'>
+        <h1>This is the results page!</h1>
+        {% if results == 1 %}
+            <h2>Your plant is healthy!</h2>
+        {% else %}
+            <h2>Your plant is unheatlhy :(</h2>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

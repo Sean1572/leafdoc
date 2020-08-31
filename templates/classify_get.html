@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}Classify Plant Leaf{%endblock %}
+{% block body %}
+    <div class='container bg-light rounded mt-4 py-3'> 
+        <div class='mt-2 jumbotron rounded'>
+            <h1>Classify Plant Leaf</h1>
+            <p>Submit a plant leaf, and we'll tell if it's healthy or not!</p>
+            <p>Works best with dark backgrounds, file size under 50 MBs</p>
+        </div>
+        <form action='/classify' method='POST' enctype="multipart/form-data">
+            <div class='form-group'>
+                <label for='file_upload'>File Upload</label> 
+                <input type='file' id='file_upload' name='file'>
+            </div>
+            <input type='submit'>
+        </form> 
+    </div>
+{% endblock %}
