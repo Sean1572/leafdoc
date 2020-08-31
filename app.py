@@ -89,7 +89,7 @@ def classify():
         #print(predictions) #I actually don't know how extactly this is formatted, I know its a numpy array so we can scprit it, don't know where to do that so pls run this print statment thank you
         #no clue if it will work ethier so there is that one too
         #REMINDER: May have to copy above tensorflow code and do it on VSCode
-        """
+
         #new_model = tf.keras.models.load_model('leaf_health_classififer')
         # Check its architecture
         new_model.summary() 
@@ -103,7 +103,6 @@ def classify():
         confidence = np.max(score)
         print(np.argmax(score), np.max(score))
 
-        """
         #results = [classed, confidence]
         results = 0
         print('successfully handled')
