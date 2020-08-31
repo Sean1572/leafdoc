@@ -1,5 +1,5 @@
 import os
-from flask import Flask, url_for, render_template, request, flash, redirect, send_from_directory
+from flask import Flask, url_for, render_template, request, flash, redirect, send_from_directory, after_this_request
 from werkzeug.utils import secure_filename
 import secrets
 import numpy as np
@@ -31,7 +31,7 @@ def index():
     return render_template('home.html')
 
 @app.route('/uploaded/<image>')
-def return_image():
+def return_image(image):
     #Return requested image (used in img src?)
     return send_from_directory(app.config['UPLOAD_FOLDER'],image)
     
@@ -41,9 +41,12 @@ def classify():
     if request.method == 'GET':
         return render_template('classify_get.html')
     else:
+        #Delete files after request
+        print(os.listdir(app.config['UPLOAD_FOLDER']))
+        for file in os.listdir(app.config['UPLOAD_FOLDER']):
+            os.remove(os.path.join(app.config['UPLOAD_FOLDER'],file))
         if request.files['file'] == '':
             flash('No file was given!')
-            print('no file given')
             return redirect(url_for('classify'))
         try:
             #Get the image filename
@@ -69,9 +72,7 @@ def classify():
             #perhaps mess with background? idk that is above pay grade
 
             img = [[np.array(img)]] #idk the brackets worked in vscode idk
-            print(img)
-            #print('process tensorflow stuff here')
-            os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            #print(img)
         except Exception as error:
             #If (aboutToCrash()):
             #   dont()
@@ -84,35 +85,26 @@ def classify():
         #TODO: Find file name
         #new_model = tf.keras.models.load_model('leaf_health_classififer')
         # Check its architecture
-        #new_model.summary() 
+        new_model.summary() 
         #predictions = new_model.predict(image)
         #print(predictions) #I actually don't know how extactly this is formatted, I know its a numpy array so we can scprit it, don't know where to do that so pls run this print statment thank you
         #no clue if it will work ethier so there is that one too
         #REMINDER: May have to copy above tensorflow code and do it on VSCode
 
-        #new_model = tf.keras.models.load_model('leaf_health_classififer')
-        # Check its architecture
-        new_model.summary() 
-        #img = tf.reshape(img, (1, 80, 80, 3))
-        #img_array  = tf.expand_dims(img, 0)
-        print(img)
-        try:print(img.shape)
-        except:print("failed shae")
-        #img_array  = tf.expand_dims(img, 0)
         img_array = tf.reshape(img, (1, 80, 80, 3))
-        print(img_array.shape)
+        #print(img_array.shape)
         predictions = new_model.predict(img_array)
         
        
         score = tf.nn.softmax(predictions[0])
         classed = np.argmax(score)
         confidence = np.max(score)
-        print(np.argmax(score), np.max(score))
+        #print(np.argmax(score), np.max(score))
 
         #results = [classed, confidence]
         results = classed
         print('successfully handled')
-        return render_template('classify_post.html',results=results)
+        return render_template('classify_post.html',results=results,confidence=confidence,filename=filename)
 
 
 @app.route('/howdoesthiswork')
