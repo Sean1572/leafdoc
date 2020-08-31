@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 import secrets
 import numpy as np
 from PIL import Image
-#import tensorflow as tf
+import tensorflow as tf
 
 app = Flask(__name__)
 
