@@ -96,11 +96,8 @@ def classify():
         #img = tf.reshape(img, (1, 80, 80, 3))
         #img_array  = tf.expand_dims(img, 0)
         print(img)
-        try:
-            predictions = new_model.predict(img)
-        except:
-             img_array  = tf.expand_dims(img, 0)
-             predictions = new_model.predict(img)
+        img_array  = tf.expand_dims(img, 0)
+        predictions = new_model.predict(img)
         
        
         score = tf.nn.softmax(predictions[0])
