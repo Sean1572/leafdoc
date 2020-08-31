@@ -110,7 +110,7 @@ def classify():
         print(np.argmax(score), np.max(score))
 
         #results = [classed, confidence]
-        results = 0
+        results = classed
         print('successfully handled')
         return render_template('classify_post.html',results=results)
 
