@@ -1,9 +1,18 @@
 {% extends "layout.html" %}
+
 {% block title %}Classify Plant Leaf{%endblock %}
+{% block style %}
+<style>
+    .jumbotron>p{
+        margin-left:303px;
+    }
+</style>
+{% endblock %}
 {% block body %}
     <div class='container bg-light rounded mt-4 py-3'> 
         <div class='mt-2 jumbotron rounded'>
-            <h1>Classify Plant Leaf</h1>
+            <h1 class='display-3'>Classify Plant Leaf</h1>
+            <hr>
             <p>Submit a plant leaf, and we'll tell if it's healthy or not!</p>
             <p>Works best with dark backgrounds, file size under 50 MBs</p>
         </div>

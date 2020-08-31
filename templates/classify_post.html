@@ -1,14 +1,26 @@
 {% extends 'layout.html' %}
 {% block title %}Plant Results {% endblock %}
+{% block styles %}
+    <style>
+        h2,h3,p{
+            text-align:right;
+        }
+    </style>
+{% endblock %}
 {% block body %}
-<div class='jumbotron container pt-3 rounded mt-4'>
+<div class='jumbotron container pt-3 rounded bg-light mt-4'>
     <div id='results'>
-        <h1>This is the results page!</h1>
+        <h1>Results</h1>
+        <hr>
         {% if results == 1 %}
             <h2>Your plant is healthy!</h2>
         {% else %}
-            <h2>Your plant is unheatlhy :(</h2>
+            <h2>Your plant is unhealthy.</h2>
         {% endif %}
+        <hr>
+        <h3>Certainty</h3>
+        <p>Our system says that it is 90.00% sure about its judgement.</p>
+
     </div>
 </div>
 {% endblock %}
