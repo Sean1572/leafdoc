@@ -94,10 +94,11 @@ def classify():
         # Check its architecture
         new_model.summary() 
         #img = tf.reshape(img, (1, 80, 80, 3))
-        img_array  = tf.expand_dims(img, 0)
-        print(img_array)
-        predictions = new_model.predict(img_array)
-        print(img_array.shape)
+        #img_array  = tf.expand_dims(img, 0)
+        print(img)
+        print(img.shape)
+        predictions = new_model.predict(img)
+       
         score = tf.nn.softmax(predictions[0])
         classed = np.argmax(score)
         confidence = np.max(score)
