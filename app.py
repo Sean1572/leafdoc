@@ -17,7 +17,7 @@ ALLOWED_EXTENSIONS = {'png','jpg','jpeg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #content length in bytes (24 mb)
 app.config['MAX_CONTENT_LENGTH'] = 24 * 1024 * 1024
-#new_model = tf.keras.models.load_model('leaf_health_classififer')
+new_model = tf.keras.models.load_model('leaf_health_classififer')
 
 def file_allowed(file):
     if '.' in file and file.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS:
