@@ -99,7 +99,7 @@ def classify():
         try:
             predictions = new_model.predict(img)
         except:
-             img_array  = tf.expand_dims(img)
+             img_array  = tf.expand_dims(img, 0)
              predictions = new_model.predict(img)
         
        
