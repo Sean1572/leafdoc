@@ -96,6 +96,8 @@ def classify():
         #img = tf.reshape(img, (1, 80, 80, 3))
         #img_array  = tf.expand_dims(img, 0)
         print(img)
+        try:print(img.shape)
+        except:print("failed shae")
         img_array  = tf.expand_dims(img, 0)
         print(img_array.shape)
         predictions = new_model.predict(img_array)
