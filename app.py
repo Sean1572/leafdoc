@@ -90,19 +90,22 @@ def classify():
         #print(predictions) #I actually don't know how extactly this is formatted, I know its a numpy array so we can scprit it, don't know where to do that so pls run this print statment thank you
         #no clue if it will work ethier so there is that one too
         #REMINDER: May have to copy above tensorflow code and do it on VSCode
-
-        img_array = tf.reshape(img, (1, 80, 80, 3))
-        #print(img_array.shape)
-        predictions = new_model.predict(img_array)
+        try:
+            img_array = tf.reshape(img, (1, 80, 80, 3))
+            #print(img_array.shape)
+            predictions = new_model.predict(img_array)
+            
         
-       
-        score = tf.nn.softmax(predictions[0])
-        classed = np.argmax(score)
-        confidence = np.max(score)
-        #print(np.argmax(score), np.max(score))
+            score = tf.nn.softmax(predictions[0])
+            classed = np.argmax(score)
+            confidence = np.max(score)
+            #print(np.argmax(score), np.max(score))
 
-        #results = [classed, confidence]
-        results = classed
+            #results = [classed, confidence]
+            results = classed
+        except Exception as error:
+            flash("We're sorry, we cannot process your image. Please use a different image.")
+            return redirect(url_for('classify'))
         print('successfully handled')
         return render_template('classify_post.html',results=results,confidence=confidence,filename=filename)
 
@@ -121,7 +124,7 @@ def explanation():
 
     
 if __name__=="__main__":
-    app.run(host='0.0.0.0',debug=True)
+    app.run(host='0.0.0.0',threaded=True)
     
 
 #[packages]
