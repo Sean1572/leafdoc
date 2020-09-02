@@ -14,14 +14,14 @@
             <h1 class='display-3'>Classify Plant Leaf</h1>
             <hr>
             <p>Submit a plant leaf, and we'll tell if it's healthy or not!</p>
-            <p>Works best with dark backgrounds, file size under 50 MBs</p>
+            <p>Works best with dark backgrounds. Please keep your image size under 50 Megabytes.</p>
         </div>
         <form action='/classify' method='POST' enctype="multipart/form-data">
             <div class='form-group'>
-                <label for='file_upload'>File Upload</label> 
+                <label for='file_upload'>File Upload</label> <br>
                 <input type='file' id='file_upload' name='file'>
             </div>
-            <input type='submit'>
+            <input type='submit' value='Analyze!'>
         </form> 
     </div>
 {% endblock %}

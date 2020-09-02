@@ -107,7 +107,7 @@ def classify():
         return render_template('classify_post.html',results=results,confidence=confidence,filename=filename)
 
 
-@app.route('/howdoesthiswork')
+@app.route('/explanation')
 def explanation():
     return render_template('explanation.html')
 

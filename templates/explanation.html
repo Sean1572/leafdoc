@@ -1,10 +1,50 @@
 {% extends 'layout.html' %}
+{% block styles %}
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
+<style>
+    #thumbnail{
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+        width:80%;
+    }
+    footer{
+        text-align:right;
+        margin-right:7em;
+    }
+    .writing-body>p{
+        font-family:'Lato', sans-serif;
+        font-size:16px;
+    }
+    #starter{
+        margin:2% 0 2% 0;
+    }
+    #explanation{
+        margin-bottom:6em;
+    }
+</style>
+{% endblock %}
 {% block title %}TensorFlow Explanation {% endblock %}
 {% block body %}
-<div class='container bg-light rounded py-2 mt-4'>
+<div class='container bg-light rounded py-2 mt-4' id='explanation'>
     <h2>How does this all work?</h2>
     <hr>
-    <p>Using TensorFlow and the cumulation of SPIS skills and past programming experience, we struggled to create a model for classifying plants into either healthy or unhealthy categories.</p>
+    <img src='https://www.tensorflow.org/tutorials/images/classification_files/output_N1loMlbYHeiJ_0.png'  id='thumbnail'>
+    <footer>Image taken from the TensorFlow website.</footer>
+    <p id='starter'>Using TensorFlow and the cumulation of SPIS skills and past programming experience, we struggled to create a model for classifying plants into either healthy or unhealthy categories.</p>
+    <div class='writing-body'>
+        <p>Our original plan with Plant Checkup was to identify the health of a plant using image classification and machine learning. 
+            Our attempts to search the internet for datasets brought us to Google's Tensorflow datasets, 
+            which we merged based on the healthiness of the plant.</p>
+        <p>Loading in the datasets, we struggled to identify a working plan using the tensorflow_datasets library,
+            Which pushed us to manually split the images two folders: healthy and unhealthy, with diseased plants falling under unhealthy. Our dataset consists of 4042 images.
+        </p>
+        <p>Although we eventually had to accept that we 
+            couldn't understand every detail of Tensorflow's algorithm, we considered the whole library a black box which we can understand the function of the lines that we wrote. 
+            After surpassing this barrier of frustration, the rest of the project was considerably straight forward: save the model, and implement a user interface for someone to use in a real life situation.
+            Using the backend Python Flask library and the Bootstrap CSS Library to set up and build the website, our product is far from finished, but is fully functional as of now.
+        </p>
+    </div>
     
 </div>
 

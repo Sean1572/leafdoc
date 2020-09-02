@@ -21,18 +21,37 @@
        color:white;
        margin-bottom: 30px;
     }
+    .card{
+        height:32rem;
+    }
+    #tensorflow-body{
+        margin-top:2em;
+    }
+    #closer{
+        height:15%;
+        text-align:left; 
+        background-color:rgba(22, 177, 37, 0.801);
+        margin-top: 4%;
+        padding: 2% 0 2% 0;
+        border-top:1px solid green;
+    }
+    #closer>.container>a,p{
+        font-family:'Roboto', sans-serif;
+        font-size:12px;
+        margin-bottom:6px;
+    }
 </style>
 {% endblock %}
 {% block body %}
     <div class='banner'>
-        <h1 style='font-size:8rem;'>Plant Doctor</h1>
+        <h1 style='font-size:8rem;'>Plant Checkup</h1>
     </div> 
     <div class='mx-auto  container row'>
         <div class='col-6'>
             <div class='card rounded'>
                 <img src='https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fmedia-2.web.britannica.com%2Feb-media%2F26%2F152026-004-48CC29A5.jpg&f=1&nofb=1' class='card-img-top' alt='A picture of scattered leaves' style='position:relative;'>
                 <div class='card-body'>
-                    <h5 class='card-title'>Plant Leaf classifier</h5>
+                    <h5 class='card-title'>Plant Leaf Health Check</h5>
                     <p class='card-text'>Concerned about the health of your plant? Upload a plant leaf here and we'll tell you about your plant!</p>
                     <a class='btn btn-lg btn-success' href={{ url_for('classify') }}>Classify plant</a>
                 </div>
@@ -41,10 +60,10 @@
         <div class='col-6'>
             <div class='card rounded'>
                 <img src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F1200%2F1*Zy0gFGzNwZAwjeCgpHhIHw.png&f=1&nofb=1' class='card-img-top' alt='A picture of scattered leaves'>
-                <div class='card-body'>
+                <div class='card-body' id='tensorflow-body'>
                     <h5 class='card-title'>Explanation</h5>
                     <p class='card-text'>Here we will explain the magic behind this website! </p>
-                    <a class='btn btn-lg btn-warning' href={{ url_for('explanation') }}>Explanation</a>
+                    <a class='btn btn-lg btn-warning mt-3' href={{ url_for('explanation') }}>Explanation</a>
                 </div>
             </div>
         </div>
@@ -52,7 +71,7 @@
     <div id='closer' class='rounded'>
         <div class='container'>
             <p>This project was made during the 2020 SPIS Summer program, created by Sean Perry and Alexander Jensen.</p>
-            <a>Github goes here</a>
+            <a class='text-dark h3' href='https://github.com/Sean1572/leafdoc'>Link To Our GitHub</a>
         </div>
     </div>
  {% endblock %}
